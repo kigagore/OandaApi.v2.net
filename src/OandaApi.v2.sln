@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OandaApi.v2.Model", "OandaApi.v2.Model\OandaApi.v2.Model.csproj", "{FD12F975-B5D7-41BE-86C6-B6E0B0DAE975}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD12F975-B5D7-41BE-86C6-B6E0B0DAE975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD12F975-B5D7-41BE-86C6-B6E0B0DAE975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD12F975-B5D7-41BE-86C6-B6E0B0DAE975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD12F975-B5D7-41BE-86C6-B6E0B0DAE975}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {019498BA-731E-4CCA-9730-D053034A8EC6}
+	EndGlobalSection
+EndGlobal
