@@ -10,13 +10,11 @@ namespace OandaApi.v20.Api
     public class ApiFacade : IApiFacade
     {
         private readonly OandaConfig _config;
-        private readonly ILogger<ApiFacade> _logger;
         private readonly HttpClient _httpClient;
 
-        public ApiFacade(OandaConfig config, ILogger<ApiFacade> logger)
+        public ApiFacade(OandaConfig config)
         {
             _config = config;
-            _logger = logger;
             _httpClient = new HttpClient();
         }
 

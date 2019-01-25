@@ -25,7 +25,7 @@ namespace Oanda.Api.V20.Api.Tests
         [Fact]
         public async Task Test1()
         {
-            var res = await _accountEndpoint.GetAccountsAsync();
+            var res = await _accountEndpoint.GetAccountInstrumentsAsync("101-004-9916937-001");
         }
     }
 }

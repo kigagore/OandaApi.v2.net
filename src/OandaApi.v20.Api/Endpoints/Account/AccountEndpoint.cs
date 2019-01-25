@@ -10,20 +10,23 @@ namespace OandaApi.v20.Api.Endpoints.Account
 {
     public class AccountEndpoint : EndpointBase, IAccountEndpoint
     {
-        private const string MethodUri = "/v3/accounts";
+        private const string GetAccountsMethodUri = "/v3/accounts";
+        private const string GetAccountInstrumentsEndpointFormat = "/v3/accounts/{0}/instruments";
         
         public AccountEndpoint(Func<HttpClient> httpClientResolver, OandaConfig config) : base(httpClientResolver, config)
         {
         }
         
-        public async Task<GetAccountsResponse> GetAccountsAsync()
+        public Task<ApiResponse<GetAccountsResponse>> GetAccountsAsync()
         {
-            var httpClient = HttpClientResolver();
-            var request = CreateRequest(HttpMethod.Get, MethodUri);
-            var response = await httpClient.SendAsync(request);
-            var responseStr = await response.Content.ReadAsStringAsync();
-            var resultObj = JsonConvert.DeserializeObject<GetAccountsResponse>(responseStr, Serializing.GetSerializerSettings());
-            return resultObj;
+            var request = CreateRequest(HttpMethod.Get, GetAccountsMethodUri);
+            return SendRequestAsync<GetAccountsResponse>(request);
+        }
+
+        public Task<ApiResponse<GetAccountInstrumentsResponse>> GetAccountInstrumentsAsync(string accountId)
+        {
+            var request = CreateRequest(HttpMethod.Get, string.Format(GetAccountInstrumentsEndpointFormat, accountId));
+            return SendRequestAsync<GetAccountInstrumentsResponse>(request);
         }
     }
 }
