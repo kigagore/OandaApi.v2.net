@@ -1,4 +1,4 @@
-## .net standart 2.0 implementation for Oanda API v2
+## .net standart 2.0 implementation for Oanda API v20
 [API description](http://developer.oanda.com/rest-live-v20/introduction/)
 
 Implementation coming soon :)
