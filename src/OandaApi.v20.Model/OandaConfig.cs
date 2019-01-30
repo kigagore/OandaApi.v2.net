@@ -6,7 +6,7 @@ namespace OandaApi.v20.Model
     {
         public string AccessToken { get; set; }
 
-        public string StreamingApiUrl { get; set; }
+        public Uri StreamingApiUrl { get; set; }
 
         public Uri RestApiUrl { get; set; }
     }
