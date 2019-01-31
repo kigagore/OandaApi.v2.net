@@ -19,25 +19,21 @@ namespace OandaApi.v20.Api.Endpoints
             _config = config;
         }
 
-        protected HttpRequestMessage CreateRequest(HttpMethod method, string endpoint)
+        protected HttpRequestMessage CreateAuthorizedRestRequest(HttpMethod method, string endpoint)
         {
-            var request = new HttpRequestMessage(method, new Uri(_config.RestApiUrl, endpoint));
+            return CreateAuthorizedRestRequest(method, endpoint, _config.RestApiUrl);
+        }
+        
+        protected HttpRequestMessage CreateAuthorizedStreamRequest(HttpMethod method, string endpoint)
+        {
+            return CreateAuthorizedRestRequest(method, endpoint, _config.StreamingApiUrl);
+        }
+        
+        private HttpRequestMessage CreateAuthorizedRestRequest(HttpMethod method, string endpoint, Uri uri)
+        {
+            var request = new HttpRequestMessage(method, new Uri(uri, endpoint));
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", _config.AccessToken); //AuthenticationHeaderValue.Parse(_config.AccessToken);
             return request;
-        }
-
-        protected async Task<ApiResponse<T>> SendRequestAsync<T>(HttpRequestMessage request) where T: class
-        {
-            var httpClient = HttpClientResolver();
-            var response = await httpClient.SendAsync(request);
-            var responseStr = await response.Content.ReadAsStringAsync();
-            if (response.IsSuccessStatusCode)
-            {
-                var resultObj = JsonConvert.DeserializeObject<T>(responseStr, Serializing.GetSerializerSettings());
-                return ApiResponse<T>.CreateSuccessResponse(resultObj, response.StatusCode);
-            }
-            var errObject = JsonConvert.DeserializeObject<ApiError>(responseStr, Serializing.GetSerializerSettings());
-            return ApiResponse<T>.CreateErrorResponse<T>(errObject, response.StatusCode);
         }
     }
 }

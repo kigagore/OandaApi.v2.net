@@ -5,7 +5,7 @@ namespace OandaApi.v20.Api.Endpoints.Pricing
     /// <summary>
     /// http://developer.oanda.com/rest-live-v20/pricing-ep/
     /// </summary>
-    public class GetPricingStreamRequest
+    public class GetPricingStreamRequest : RequestBase
     {
         /// <summary>
         /// Account Identifier [required]

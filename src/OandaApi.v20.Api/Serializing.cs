@@ -5,12 +5,13 @@ namespace OandaApi.v20.Api
 {
     internal static class Serializing
     {
-        public static JsonSerializerSettings GetSerializerSettings()
+        public static JsonSerializerSettings GetSerializerSettings(params JsonConverter[] converters)
         {
             return new JsonSerializerSettings
             {
                 ContractResolver = GetDefaultContractResolver(),
-                Formatting = Formatting.Indented
+                Formatting = Formatting.Indented,
+                Converters = converters
             };
         }
 

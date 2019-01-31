@@ -5,7 +5,7 @@ using OandaApi.v20.Model;
 
 namespace OandaApi.v20.Api.Endpoints.Instrument
 {
-    public class InstrumentEndpoint : EndpointBase, IInstrumentEndpoint
+    public class InstrumentEndpoint : RestEndpointBase, IInstrumentEndpoint
     {
         private const string GetCandlesticksEndpointFormat = "/v3/instruments/{0}/candles";
         
@@ -15,7 +15,7 @@ namespace OandaApi.v20.Api.Endpoints.Instrument
 
         public Task<ApiResponse<GetCandlesResponse>> GetCandlesticksAsync(GetCandlesRequest request)
         {
-            var httpRequestMessage = CreateRequest(HttpMethod.Get, string.Format(GetCandlesticksEndpointFormat, request.InstrumentName) + request.ToQueryString());
+            var httpRequestMessage = CreateAuthorizedRestRequest(HttpMethod.Get, string.Format(GetCandlesticksEndpointFormat, request.InstrumentName) + request.ToQueryString());
             return SendRequestAsync<GetCandlesResponse>(httpRequestMessage);
         }
     }
